@@ -34,7 +34,7 @@
     @yield('styles')
 </head>
 
-<body class="container mx-auto my-10 max-w-lg">
+<body class="container mx-auto my-10 max-w-lg min-h-100">
     <h1 class="text-2xl mb-4 font-semibold">@yield('title')</h1>
     <div x-data="{ flash: true }">
         @if (session()->has('success'))
@@ -54,5 +54,11 @@
         @yield('content')
     </div>
 </body>
+
+<footer class="bg-stone-50 text-center mt-7">
+    <div class="font-medium">
+        Copyright &copy;{{ date('Y') }} Made by <a href="http://github.com/rulhuda" class="link">Nurul Huda</a>
+    </div>
+</footer>
 
 </html>
