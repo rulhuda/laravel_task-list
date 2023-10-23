@@ -3,14 +3,15 @@
 @section('title', isset($task) ? route('tasks.update', ['task' => $task->id]) : 'Add Task')
 
 @section('content')
-    <form method="POST" action="{{ isset($task) ? route('tasks.update', ['task' => $task->id]) : route('tasks.store')}}">
+    <form method="POST" action="{{ isset($task) ? route('tasks.update', ['task' => $task->id]) : route('tasks.store') }}">
         @csrf
         @isset($task)
             @method('PUT')
         @endisset
         <div class='mb-4'>
             <label for="title">Title</label>
-            <input type="text" name="title" id="title" @class(['border-red-500' => $errors->has('title')]) value="{{ $task->title ?? old('title') }}">
+            <input type="text" name="title" id="title" @class(['border-red-500' => $errors->has('title')])
+                value="{{ $task->title ?? old('title') }}">
             @error('title')
                 <p class="error">{{ $message }}</p>
             @enderror
@@ -34,7 +35,7 @@
                 @isset($task)
                     Update Task
                 @else
-                Add Task
+                    Add Task
                 @endisset
             </button>
             <a href="{{ route('tasks.index') }}" class="link">Cancel</a>
